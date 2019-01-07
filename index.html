@@ -8,18 +8,21 @@
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
+
+    <audio id="theme_song" src="theme_song.mp3"></audio>
+
     <main id="game-area">
       <div class="row">
         <div class="card">
-          <div class="front"><img src="images/1.jpg"></div>
+          <div class="front"><img></div>
           <div class="back"><img src="images/back.png"></div>
         </div>
         <div class="card">
-          <div class="front"><img src="images/2.jpg"></div>
+          <div class="front"><img></div>
           <div class="back"><img src="images/back.png"></div>
         </div>
         <div class="card">
-          <div class="front"><img src="images/2.jpg"></div>
+          <div class="front"><img></div>
           <div class="back"><img src="images/back.png"></div>
         </div>
         <div class="card">
@@ -91,10 +94,23 @@
       </div>
     </main>
 
+    <div class="response_modal flip">
+      <div class="response_wrapper">
+        <div class="fingerprint"></div>
+        <div class="criminal"></div>
+      </div>
+
+      <p class="match"></p>
+    </div>
+
+    <div class="win_modal flip">
+      <h1>YOU WIN!</h1>
+    </div>
+
     <footer>
       <img class="logo" src="images/logo.png">
 
-      <div class="games-played">
+      <div class="games_played">
         <p class="label">Games Played:</p>
         <p class="value">0</p>
       </div>
@@ -106,16 +122,13 @@
 
       <div class="accuracy">
         <p class="label">Accuracy:</p>
-        <p class="value">0</p>
+        <p class="value">0%</p>
       </div>
 
       <div class="icons">
-        <i class="material-icons">refresh</i>
+        <i class="material-icons reset">refresh</i>
         <br>
-        <i class="material-icons">volume_up</i>
-
-        <!-- volume_off -->
-
+        <i class="material-icons"></i>
       </div>
       
     </footer>
