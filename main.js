@@ -1,18 +1,18 @@
 $(document).ready(initiateApp);
 
-var first_card_clicked = null;
-var second_card_clicked = null;
-var total_possible_matches = 9;
-var match_counter = 0;
-var isClickable = true;
+let first_card_clicked = null;
+let second_card_clicked = null;
+const total_possible_matches = 9;
+let match_counter = 0;
+let isClickable = true;
 
-var matches = 0;
-var attempts = 0;
-var accuracy;
-var games_played = 0;
+let matches = 0;
+let attempts = 0;
+let accuracy;
+let games_played = 0;
 
-var repetitions = 0;
-var matched_fingerprint;
+let repetitions = 0;
+let matched_fingerprint;
 
 var cards = [
   'images/1.jpg',
@@ -35,13 +35,13 @@ var cards = [
   'images/9.jpg'
 ]
 
-function initiateApp(){
+const initiateApp = () => {
   $('.card').on('click', card_clicked);
   $('.reset').click(reset_game);
   shuffle_cards();
 }
 
-function shuffle_cards(){
+const shuffle_cards = () => {
   for(var i = 0; i < 18; i++){
     var randomNumber = Math.floor(Math.random() * cards.length);
     $('.front > img').eq(i).attr('src', cards[randomNumber]);
@@ -49,7 +49,7 @@ function shuffle_cards(){
   }
 }
 
-function card_clicked(){
+const card_clicked = () => {
   if(isClickable === true){
     $(this).find('.back').addClass('flip');
       if(first_card_clicked === null && !$(this).find('.front').hasClass('matched')){
@@ -83,17 +83,17 @@ function card_clicked(){
     display_stats();
 }
 
-function show_response_modal(image_name){
+const show_response_modal(image_name){
   $('.response_modal').removeClass('flip');
   $('.fingerprint').css("background-image", "url('" + image_name + "')");
 }
 
-function remove_response_modal(){
+const remove_response_modal = () => {
   $('.response_modal').addClass('flip');
   $('.match').text("");
 }
 
-function flip_back(){
+const flip_back = () => {
   first_card_clicked.find('.back').removeClass('flip');
   second_card_clicked.find('.back').removeClass('flip');
   first_card_clicked = null;
@@ -101,11 +101,10 @@ function flip_back(){
   isClickable = true;
 }
 
-function display_stats(){
+const display_stats = () => {
   if(matches === 0 && attempts === 0){
     accuracy = 0
   } else {
-
     accuracy = Math.floor(matches/attempts * 100) / 100;
   }
   $('.games_played > .value').text(games_played);
@@ -113,14 +112,14 @@ function display_stats(){
   $('.accuracy > .value').text(accuracy + "%");
 }
 
-function reset_stats(){
+const reset_stats = () => {
   accuracy = 0;
   matches = 0;
   attempts = 0;
   display_stats();
 }
 
-function reset_game(){
+const reset_game = () => {
   games_played++;
   reset_stats();
   display_stats();
@@ -130,7 +129,8 @@ function reset_game(){
   document.getElementById("theme_song").pause();
 }
 
-function shuffle_criminals(){
+const shuffle_criminals = () => {
+  play_song();
   repetitions++;
   var criminals = [
     'images/blue_paint_killer.jpg',
@@ -160,7 +160,10 @@ function shuffle_criminals(){
   }
 }
 
-function win_modal(){
-  document.getElementById("theme_song").play();
-  $('.win_modal').removeClass('flip');
+const play_song = () => {
+  document.getElementById("who_are_you").play();
 }
+
+const win_modal = () => {
+  console.log("You win!")
+} 
